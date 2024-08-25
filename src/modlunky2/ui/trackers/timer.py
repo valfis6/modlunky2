@@ -70,8 +70,7 @@ class COTimers():
             self.co_avg = 0
             self.co_final = 0
 
-    def get(self, proc: Spel2Process):
-        self.update(proc)
+    def get(self):
         return self.co_entry, self.co_avg, self.co_final
 
 class TimerModifiers(ttk.LabelFrame):
@@ -292,7 +291,7 @@ class TimerTracker(Tracker[TimerTrackerConfig, WindowData]):
         self.time_last_level = game_state.time_last_level
         self.time_tutorial = game_state.time_tutorial
         self.time_session = self.time_startup + (time.time() - self.time_start) * 60
-        self.co_entry, self.co_avg, self.co_final = self.co_timers.get(proc)
+        self.co_entry, self.co_avg, self.co_final = self.co_timers.update(proc).get()
 
         if self.first_level is None or game_state.level_count == 0:
             self.first_level = game_state.level_count
