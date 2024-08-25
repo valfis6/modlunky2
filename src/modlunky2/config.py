@@ -154,6 +154,7 @@ class TimerTrackerConfig(CommonTrackerConfig):
     show_tutorial: bool = field(default=False, skip_if_default=True)
     show_session: bool = field(default=False, skip_if_default=True)
     show_ils: bool = field(default=False, skip_if_default=True)
+    show_co_timers: bool = field(default=False, skip_if_default=True)
 
 
 @serialize(rename_all="kebabcase")
